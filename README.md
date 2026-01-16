@@ -2,7 +2,7 @@
 
 # AI-Powered Customer Support System
 
-**Full-Stack Engineering **
+**Full-Stack Engineering**
 
 This repository contains a **full-stack AI-powered customer support system** built as part of a **Junior Engineer (Full Stack) assessment**.
 The project focuses on **clean backend architecture**, **multi-agent orchestration**, **database-backed tools**, and **AI-assisted responses**, with the entire system **fully containerized using Docker Compose**.
