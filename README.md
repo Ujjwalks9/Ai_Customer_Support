@@ -28,44 +28,42 @@ Conversation context is persisted so agents can respond with awareness of prior 
 
 ```mermaid
 graph TD
-    subgraph Client[" Client Layer"]
-        UI[React + Vite Chat UI]
+    subgraph Client["Client Layer"]
+        UI[React Vite Chat UI]
     end
 
-    subgraph Server[" Backend Layer"]
+    subgraph Server["Backend Layer"]
         API[Hono REST API]
-        Controller[Controllers]
+        Controller[Chat Controller]
         Service[Chat Service]
         Router[Router Agent]
     end
 
-    subgraph Agents[" Agent Layer"]
-        Support[Support Agent (AI)]
+    subgraph Agents["Agent Layer"]
+        Support[Support Agent - AI]
         Order[Order Agent]
         Billing[Billing Agent]
     end
 
-    subgraph Infra[" Infrastructure"]
+    subgraph Infra["Infrastructure"]
         DB[(PostgreSQL)]
         Groq[Groq LLM]
     end
 
-    %% Client to Server
-    UI -->|HTTP| API
+    UI --> API
     API --> Controller
     Controller --> Service
     Service --> Router
 
-    %% Routing
     Router --> Support
     Router --> Order
     Router --> Billing
 
-    %% Data & AI
-    Support -->|AI Stream| Groq
-    Order -->|Query| DB
-    Billing -->|Query| DB
-    Support -->|Conversation History| DB
+    Support --> Groq
+    Support --> DB
+    Order --> DB
+    Billing --> DB
+
 ```
 
 ---
